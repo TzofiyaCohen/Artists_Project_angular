@@ -1,0 +1,25 @@
+.topBtns{
+    justify-content: space-around;
+}
+
+.asc{
+    margin-left: 8px;
+}
+
+.imgStyle{
+    border-radius: 45px;
+    width: 90px;
+    height: 90px;
+   }
+
+ table{
+     padding: 2px;
+ }
+
+ .profil_img {
+    width: 15%;
+  }
+
+  img {
+    width: 70%;
+  }
