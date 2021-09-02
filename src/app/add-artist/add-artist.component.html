@@ -1,0 +1,28 @@
+<button class="btn btn-outline-primary btn-sm m-3" (click)="open(content)">Add Artist</button>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Artist Details</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="form-group">
+                <label for="artist_id">Artist ID</label>
+                <input placeholder="enter artist id" class="form-control" type="text" #artist_id />
+                <label for="artist_name">Artist Name</label>
+                <input placeholder="enter artist name" class="form-control" type="text" #artist_name />
+                <label for="birth">Artist Birth</label>
+                <input placeholder="enter birth" class="form-control" type="date" #birth />
+                <label for="songs">Artist Image</label>
+                <input placeholder="https://yourImage.svg" class="form-control" type="url" #image />
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark"
+            (click)="addNewArtist(artist_id,artist_name,birth,image); modal.close('Save click') ">Save</button>
+    </div>
+</ng-template>

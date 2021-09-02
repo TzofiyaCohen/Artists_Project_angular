@@ -2,7 +2,7 @@
 
   <h2 style="text-align:center">Artists list</h2>
   <div class="topBtns">
-    <button class="btn btn-outline-primary btn-sm m-3" (click)="open(content)">Add Artist</button>
+    <app-add-artist></app-add-artist>
 
     <select (change)="sortBy($event)">
       <option value="artist_name">Artist Name</option>
@@ -10,7 +10,7 @@
       <option value="birth">Birth</option>
     </select>
 
-    <button class="btn btn-outline-secondary asc" (click)="isAsc=!isAsc">asc/desc</button>
+    <button class="btn btn-outline-secondary asc" (click)="sharedDataService.updateIsAsc()">asc/desc</button>
   </div>
 
   <table class=" table">
@@ -23,7 +23,9 @@
       <th>Actions</th>
     </tr>
 
-    <tr *ngFor="let artist of artists| sort:[sortByFild,isAsc]" style="border-bottom: solid 1px beige;">
+    <tr
+      *ngFor="let artist of sharedDataService.artists.value| sort:[sharedDataService.sortByFild.value,sharedDataService.isAsc.value]"
+      style="border-bottom: solid 1px beige;">
 
       <td class="profil_img">
         <img class="imgStyle" src="{{ artist.image }}" alt="">
@@ -53,32 +55,5 @@
     </tr>
   </table>
 
-  <button class="btn btn-outline-primary btn-sm m-3" (click)="open(content)">Add Artist</button>
+  <app-add-artist></app-add-artist>
 </div>
-
-<ng-template #content let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Artist Details</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <form>
-      <div class="form-group">
-        <label for="artist_id">Artist ID</label>
-        <input placeholder="enter artist id" class="form-control" type="text" #artist_id />
-        <label for="artist_name">Artist Name</label>
-        <input placeholder="enter artist name" class="form-control" type="text" #artist_name />
-        <label for="birth">Artist Birth</label>
-        <input placeholder="enter birth" class="form-control" type="date" #birth />
-        <label for="songs">Artist Image</label>
-        <input placeholder="https://yourImage.svg" class="form-control" type="url" #image />
-      </div>
-    </form>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark"
-      (click)="addNewArtist(artist_id,artist_name,birth,image); modal.close('Save click') ">Save</button>
-  </div>
-</ng-template>

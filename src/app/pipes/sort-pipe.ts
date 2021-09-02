@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class SortPipe implements PipeTransform {
   transform(arr: any, args: any[]): any {
     var sortBy = args[0]
-    var isAsc = args[1];
+    var isAsc = args[1]
     console.log(sortBy, isAsc, "sort params")
 
     if (!Array.isArray(arr)) {
